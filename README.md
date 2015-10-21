@@ -3,10 +3,10 @@ Plugin to include HTML tags in titles. <br />Enclose your text between {titlecha
 Examples:<br />
 This text should be {titlechange:sup superscript} and normal again.<br /> 
 RESULTS IN<br />
-This text should be <sup>superscript</sup> and normal again.<br />
+This text should be ``<span class="sup">superscript</span>`` and normal again.<br />
 Creating a css class .sup {vertical-align: super; font-size: smaller;} you get the text as superscript. <br />
 <br />
 This text should be {titlechange:red in red color} and normal again.<br /> 
 RESULTS IN<br />
-This text should be <span style="color: #ff0000 ;">in red color</span> and normal again.<br />
+This text should be ``<span class="red">in red color</span>`` and normal again.<br />
 Creating a css class .red {color: #ff0000;} you get the text in red color. <br />
