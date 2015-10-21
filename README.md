@@ -8,5 +8,5 @@ Creating a css class .sup {vertical-align: super; font-size: smaller;} you get t
 <br />
 This text should be {titlechange:red in red color} and normal again.<br /> 
 RESULTS IN<br />
-This text should be <span style='color:red;'>in red color</span> and normal again.<br />
+This text should be <span style="color: #ff0000 ;">in red color</span> and normal again.<br />
 Creating a css class .red {color: #ff0000;} you get the text in red color. <br />
