@@ -58,16 +58,29 @@ class PlgSystemTitlechange extends JPlugin
 	 */
 	public function replaceTags($text)
 	{
+		$result = $text;
+		while (preg_match_all('/<title>([^\{\}]*){titlechange:([^\s}]+)\ ([^\}]+)\}(.*?)<\/title>/', $text, $matches)) {
+			foreach ($matches[2] as $matchIndex => $match)
+			{
+				$tag = $matches[0][$matchIndex];
+				$group1 = $matches[1][$matchIndex];
+				$group3 = $matches[3][$matchIndex];
+				$group4 = $matches[4][$matchIndex];
+				$text = str_replace($tag, "<title>" .$group1. $group3 .$group4. "</title>", $text);
+			}
+		}
 		if (!preg_match_all('/{titlechange:([^\s}]+)\ ([^\}]+)\}/', $text, $matches))
 		{
 			return $text;
+		} else {
+			foreach ($matches[2] as $matchIndex => $match)
+			{
+				$tag = $matches[0][$matchIndex];
+				$classname = $matches[1][$matchIndex];
+				$text = str_replace($tag, "<span class=".$classname.">" .$match . "</span>", $text);
+			}
+				
+			return $text;
 		}
-		foreach ($matches[2] as $matchIndex => $match)
-		{
-			$tag = $matches[0][$matchIndex];
-			$classname = $matches[1][$matchIndex];
-			$text = str_replace($tag, "<span class=".$classname.">" .$match . "</span>", $text);
-		}
-		return $text;
 	}
 }
