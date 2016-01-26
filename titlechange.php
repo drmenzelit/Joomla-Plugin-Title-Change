@@ -15,16 +15,17 @@ jimport('joomla.plugin.plugin');
 /**
  * Class PlgSystemTitlechange
  *
- * @since  April 2015
+ * @since  1.0.0
  */
-
 class PlgSystemTitlechange extends JPlugin
 {
 	/**
 	 * Constructor
 	 *
-	 * @param   object  &$subject  Instance of JEventDispatcher
-	 * @param   array   $config    Configuration
+	 * @param  object  &$subject  Instance of JEventDispatcher
+	 * @param  array   $config    Configuration
+	 *
+	 * @since  1.0.0
 	 */
 	public function __construct(& $subject, $config)
 	{
@@ -36,17 +37,23 @@ class PlgSystemTitlechange extends JPlugin
 	/**
 	 * Event method onAfterRender
 	 *
-	 * @return null
+	 * @return  void
+	 *
+	 * @since   1.0.0
 	 */
 	public function onAfterRender()
 	{
 		$application = JFactory::getApplication();
+
+		// Don't run this plugin in the Admin
 		if ($application->isSite() == false)
 		{
 			return;
 		}
+
 		$body = $application->getBody();
 		$body = $this->replaceTags($body);
+
 		$application->setBody($body);
 	}
 	/**
@@ -54,32 +61,39 @@ class PlgSystemTitlechange extends JPlugin
 	 * 
 	 * @param   string  $text  Text to replace tags in
 	 *
-	 * @return mixed
+	 * @return  string
+	 *
+	 * @since   1.0.0
 	 */
 	public function replaceTags($text)
 	{
-		$result = $text;
-		while (preg_match_all('/<title>([^\{\}]*){titlechange:([^\s}]+)\ ([^\}]+)\}(.*?)<\/title>/', $text, $matches)) {
+		// What does this regEx?
+		while (preg_match_all('/<title>([^\{\}]*){titlechange:([^\s}]+)\ ([^\}]+)\}(.*?)<\/title>/', $text, $matches))
+		{
 			foreach ($matches[2] as $matchIndex => $match)
 			{
-				$tag = $matches[0][$matchIndex];
+				$tag    = $matches[0][$matchIndex];
 				$group1 = $matches[1][$matchIndex];
 				$group3 = $matches[3][$matchIndex];
 				$group4 = $matches[4][$matchIndex];
-				$text = str_replace($tag, "<title>" .$group1. $group3 .$group4. "</title>", $text);
+				$text   = str_replace($tag, "<title>" . $group1 . $group3 . $group4 . "</title>", $text);
 			}
 		}
+
+		// What does this regEx?
 		if (!preg_match_all('/{titlechange:([^\s}]+)\ ([^\}]+)\}/', $text, $matches))
 		{
 			return $text;
-		} else {
+		}
+		else
+		{
 			foreach ($matches[2] as $matchIndex => $match)
 			{
-				$tag = $matches[0][$matchIndex];
+				$tag       = $matches[0][$matchIndex];
 				$classname = $matches[1][$matchIndex];
-				$text = str_replace($tag, "<span class=".$classname.">" .$match . "</span>", $text);
+				$text      = str_replace($tag, "<span class=" . $classname . ">" . $match . "</span>", $text);
 			}
-				
+	
 			return $text;
 		}
 	}
