@@ -3,7 +3,7 @@
 	<name>plg_system_titlechange</name>
 	<author>Viviana Menzel</author>
 	<creationDate>April 2015</creationDate>
-	<copyright>Copyright (C) 2015. All rights reserved.</copyright>
+	<copyright>Copyright (C) 2015 - 2016. All rights reserved.</copyright>
 	<license>GNU General Public License version 3 or later</license>
 	<authorEmail>vivianamenzel@dr-menzel-it.de</authorEmail>
 	<authorUrl>www.dr-menzel-it.de</authorUrl>
@@ -12,11 +12,9 @@
 
 	<files>
 		<filename plugin="titlechange">titlechange.php</filename>
-		<filename>index.html</filename>
 	</files>
 
 	<languages folder="language">
-		<language tag="en-GB">en-GB.plg_system_titlechange.ini</language>
 		<language tag="en-GB">en-GB.plg_system_titlechange.sys.ini</language>
 	</languages>
 </extension>
