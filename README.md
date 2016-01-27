@@ -1,6 +1,6 @@
 # Joomla-Plugin-Title-Change
 Plugin to include HTML tags in titles. <br />
-Background: Joomla strips HTML tags from titles (in articles or modules), so you cannot pu for example some part of the title in superscripts (that was a requirement from a client). A title like "34th Joomla Congress", the "th" cannot be put in superscripts. Or bold, or red or whatever... To solve this problem, I developed this plugin. Enclosing the part of the title you want to make different between {titlechange:yourclass and }, you get the text into a ``<span class="yourclass">`` tag. With the appropriate css definition you can change the text as you like. The opening "{titlechange:" and the closing "}" are fixed parts of the plugin pattern. "yourclass" can be what you want.<br />
+Background: Joomla strips HTML tags from titles (in articles or modules), so you cannot put for example some part of the title in superscripts (that was a requirement from a client). A title like "34th Joomla Congress", the "th" cannot be put in superscripts. Or bold, or red or whatever... To solve this problem, I developed this plugin. Enclosing the part of the title you want to make different between {titlechange:yourclass and }, you get the text into a ``<span class="yourclass">`` tag. With the appropriate css definition you can change the text as you like. The opening "{titlechange:" and the closing "}" are fixed parts of the plugin pattern. "yourclass" can be what you want.<br />
 <br />
 Enclose your text between {titlechange:yourclass and } to include a span class in the title.<br />
 <br />

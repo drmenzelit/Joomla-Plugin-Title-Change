@@ -30,8 +30,6 @@ class PlgSystemTitlechange extends JPlugin
 	public function __construct(& $subject, $config)
 	{
 		parent::__construct($subject, $config);
-
-		$this->loadLanguage();
 	}
 
 	/**
@@ -67,7 +65,7 @@ class PlgSystemTitlechange extends JPlugin
 	 */
 	public function replaceTags($text)
 	{
-		// What does this regEx?
+		// This regEx search for {titlechange:myClass my text} parts inside a <title></title> tag
 		while (preg_match_all('/<title>([^\{\}]*){titlechange:([^\s}]+)\ ([^\}]+)\}(.*?)<\/title>/', $text, $matches))
 		{
 			foreach ($matches[2] as $matchIndex => $match)
@@ -80,7 +78,7 @@ class PlgSystemTitlechange extends JPlugin
 			}
 		}
 
-		// What does this regEx?
+		// This regEx search for {titlechange:myClass [([^\s}]+)\] my text [([^\}]+)\]} parts
 		if (!preg_match_all('/{titlechange:([^\s}]+)\ ([^\}]+)\}/', $text, $matches))
 		{
 			return $text;
