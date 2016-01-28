@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.4" type="plugin" group="system" method="upgrade">
-	<name>plg_system_titlechange</name>
+	<name>PLG_SYSTEM_TITLECHANGE</name>
 	<author>Viviana Menzel</author>
 	<creationDate>April 2015</creationDate>
 	<copyright>Copyright (C) 2015 - 2016. All rights reserved.</copyright>
 	<license>GNU General Public License version 3 or later</license>
 	<authorEmail>vivianamenzel@dr-menzel-it.de</authorEmail>
 	<authorUrl>www.dr-menzel-it.de</authorUrl>
-	<version>1.0.1</version>
+	<version>1.0.3</version>
 	<description>PLG_SYSTEM_TITLECHANGE_XML_DESCRIPTION</description>
+
+    <updateservers>
+        <server type="extension" priority="1" name="plg_system_titlechange">http://extensions.dr-menzel-it.de/titlechange.xml</server>
+    </updateservers>
 
 	<files>
 		<filename plugin="titlechange">titlechange.php</filename>
