@@ -20,17 +20,9 @@ jimport('joomla.plugin.plugin');
 class PlgSystemTitlechange extends JPlugin
 {
 	/**
-	 * Constructor
-	 *
-	 * @param  object  &$subject  Instance of JEventDispatcher
-	 * @param  array   $config    Configuration
-	 *
-	 * @since  1.0.0
+	 * var  JApplicationCms
 	 */
-	public function __construct(& $subject, $config)
-	{
-		parent::__construct($subject, $config);
-	}
+	protected $app;
 
 	/**
 	 * Event method onAfterRender
@@ -41,18 +33,19 @@ class PlgSystemTitlechange extends JPlugin
 	 */
 	public function onAfterRender()
 	{
-		$application = JFactory::getApplication();
-
 		// Don't run this plugin in the Admin
-		if ($application->isSite() == false)
+		if ($this->app->isSite() == false)
 		{
 			return;
 		}
 
-		$body = $application->getBody();
-		$body = $this->replaceTags($body);
-
-		$application->setBody($body);
+		$body = $this->app->getBody();
+		
+		if (strpos($body, '{titlechange') !== false)
+		{
+			$body = $this->replaceTags($body);
+			$this->app->setBody($body);
+		}
 	}
 	/**
 	 * Method to replace tags in a text
@@ -65,8 +58,8 @@ class PlgSystemTitlechange extends JPlugin
 	 */
 	public function replaceTags($text)
 	{
-		// This regEx search for {titlechange:myClass my text} parts inside a <title></title> tag
-		while (preg_match_all('/<title>([^\{\}]*){titlechange:([^\s}]+)\ ([^\}]+)\}(.*?)<\/title>/', $text, $matches))
+		// This regEx search for {titlechange:myClass my text} parts inside a <title></title> tag, should only appear once...
+		if (preg_match('/<title>([^\{\}]*){titlechange:([^\s}]+)\ ([^\}]+)\}(.*?)<\/title>/', $text, $matches))
 		{
 			foreach ($matches[2] as $matchIndex => $match)
 			{
@@ -79,11 +72,7 @@ class PlgSystemTitlechange extends JPlugin
 		}
 
 		// This regEx search for {titlechange:myClass [([^\s}]+)\] my text [([^\}]+)\]} parts
-		if (!preg_match_all('/{titlechange:([^\s}]+)\ ([^\}]+)\}/', $text, $matches))
-		{
-			return $text;
-		}
-		else
+		if (preg_match_all('/{titlechange:([^\s}]+)\ ([^\}]+)\}/', $text, $matches))
 		{
 			foreach ($matches[2] as $matchIndex => $match)
 			{
@@ -91,8 +80,8 @@ class PlgSystemTitlechange extends JPlugin
 				$classname = $matches[1][$matchIndex];
 				$text      = str_replace($tag, "<span class=" . $classname . ">" . $match . "</span>", $text);
 			}
-	
-			return $text;
 		}
+		
+		return $text;
 	}
 }
