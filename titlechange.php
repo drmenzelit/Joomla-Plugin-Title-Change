@@ -59,7 +59,7 @@ class PlgSystemTitlechange extends JPlugin
 	public function replaceTags($text)
 	{
 		// This regEx search for {titlechange:myClass my text} parts inside a <title></title> tag, should only appear once...
-		if (preg_match('/<title>([^\{\}]*){titlechange:([^\s}]+)\ ([^\}]+)\}(.*?)<\/title>/', $text, $matches))
+		while (preg_match_all('/<title>([^\{\}]*){titlechange:([^\s}]+)\ ([^\}]+)\}(.*?)<\/title>/', $text, $matches))
 		{
 			foreach ($matches[2] as $matchIndex => $match)
 			{
