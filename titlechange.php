@@ -10,7 +10,7 @@
 
 defined('_JEXEC') or die;
 
-jimport('joomla.plugin.plugin');
+use Joomla\CMS\Plugin\CMSPlugin;
 
 /**
  * Class PlgSystemTitlechange
@@ -34,13 +34,13 @@ class PlgSystemTitlechange extends JPlugin
 	public function onAfterRender()
 	{
 		// Don't run this plugin in the Admin
-		if ($this->app->isSite() == false)
+		if ($this->app->isClient('administrator'))
 		{
 			return;
 		}
 
 		$body = $this->app->getBody();
-		
+
 		if (strpos($body, '{titlechange') !== false)
 		{
 			$body = $this->replaceTags($body);
@@ -49,7 +49,7 @@ class PlgSystemTitlechange extends JPlugin
 	}
 	/**
 	 * Method to replace tags in a text
-	 * 
+	 *
 	 * @param   string  $text  Text to replace tags in
 	 *
 	 * @return  string
@@ -81,7 +81,7 @@ class PlgSystemTitlechange extends JPlugin
 				$text      = str_replace($tag, "<span class=" . $classname . ">" . $match . "</span>", $text);
 			}
 		}
-		
+
 		return $text;
 	}
 }
