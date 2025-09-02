@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<updates>
+	<update>
+		<name>Modify titles with HTML/CSS</name>
+		<description>New version with support for Joomla 5 and Joomla 6</description>
+		<element>titlechange</element>
+		<type>plugin</type>
+		<folder>system</folder>
+		<client>site</client>
+		<version>2.0.0</version>
+		<infourl title="URL">https://github.com/drmenzelit/Joomla-Plugin-Title-Change</infourl>
+		<downloads>
+			<downloadurl type="full" format="zip">https://github.com/drmenzelit/Joomla-Plugin-Title-Change/releases/download/2.0.0/plg_system_titlechange-2.0.0.zip</downloadurl>
+		</downloads>
+		<sha512>751dac186a2b5a819da2c1939cf236e61353d6b63a90f2f401db28c7cd364aaa21cc361c9b0930995f4a96f26110b8f91a18bf2dc239e2dc52a8a7e1eaf2e587</sha512>
+		<maintainer>Viviana Menzel</maintainer>
+		<maintainerurl>https://www.dr-menzel-it.de</maintainerurl>
+		<php_minimum>8.0.0</php_minimum>
+		<targetplatform name="joomla" version="[456].[1234567890]"/>
+	</update>
+</updates>

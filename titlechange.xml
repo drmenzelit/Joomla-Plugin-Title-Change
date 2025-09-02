@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="3.4" type="plugin" group="system" method="upgrade">
-	<name>PLG_SYSTEM_TITLECHANGE</name>
+<extension type="plugin" group="system" method="upgrade">
+	<name>plg_system_titlechange</name>
 	<author>Viviana Menzel</author>
 	<creationDate>April 2015</creationDate>
-	<copyright>Copyright (C) 2015 - 2021. All rights reserved.</copyright>
+	<copyright>Copyright (C) 2015 - 2025 Viviana Menzel</copyright>
 	<license>GNU General Public License version 3 or later</license>
 	<authorEmail>vivianamenzel@dr-menzel-it.de</authorEmail>
 	<authorUrl>www.dr-menzel-it.de</authorUrl>
-	<version>1.0.6</version>
+	<version>2.0.0</version>
 	<description>PLG_SYSTEM_TITLECHANGE_XML_DESCRIPTION</description>
+	<namespace path="src">Drmenzelit\Plugin\System\Titlechange</namespace>
 
 	<updateservers>
-		<server type="extension" priority="1" name="plg_system_titlechange">http://extensions.dr-menzel-it.de/titlechange.xml</server>
+		<server type="extension" name="plg_system_titlechange">https://raw.githubusercontent.com/drmenzelit/Joomla-Plugin-Title-Change/master/update.xml</server>
 	</updateservers>
 
 	<files>
-		<filename plugin="titlechange">titlechange.php</filename>
+		<folder plugin="titlechange">services</folder>
+		<folder>src</folder>
+		<folder>language</folder>
 	</files>
 
-	<languages folder="language">
-		<language tag="en-GB">en-GB.plg_system_titlechange.sys.ini</language>
-		<language tag="de-DE">de-DE.plg_system_titlechange.sys.ini</language>
-		<language tag="es-ES">es-ES.plg_system_titlechange.sys.ini</language>
-	</languages>
 </extension>
